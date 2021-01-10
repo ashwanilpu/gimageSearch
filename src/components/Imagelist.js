@@ -7,11 +7,7 @@ function Imagelist(props) {
                return <ImageCard key={image.id} image={image}/>
            });
         
-    return( 
-    <div>
-        <div className='layout'>{images}</div>
-    </div>
-    );
-}
+    return <div className='layout'>{images}</div>;
+};
 
 export default Imagelist;

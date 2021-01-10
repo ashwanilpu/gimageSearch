@@ -4,21 +4,27 @@ import Searchfield from './Searchfield';
 import Imagelist from './Imagelist';
 
 class App extends React.Component{
-  state={images:[]};
+  state={images:[],
+  };
     handleInput = async(term)=>{
       const response=await axios.get('https://api.unsplash.com/search/photos',{
-        params:{query: term},
+        params:{query: term,per_page:30},
         headers:{ Authorization :'Client-ID CHlYTbx6KnN2HBVjtzo4wIKreBvGGvYBlvWYNhmHqeo'}
            
      });
-       this.setState({images:response.data.results});  
+       this.setState({images:response.data.results}); 
     }
 
       render() {
         return (
         <div>
-         <Searchfield  onSubmit={this.handleInput}/>
-         <Imagelist images={this.state.images}/>
+          
+          <Searchfield  onSubmit={this.handleInput}/>
+        
+             <Imagelist images={this.state.images}/>
+             
+       
+         
         </div>
         );
      }
